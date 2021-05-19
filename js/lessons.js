@@ -1,37 +1,137 @@
 'use strict';
 
-// new RegExp('pattern', 'flags');
-// /pattern/flags
+function User(name, age) {
+    let userName = name;
+    let userAge = age;
 
-// Flags
-// i - ищем независимо от регистра
-// g - поиск нескольких вхождений
-// m - многострочный режим
+    this.say = function() {
+        console.log(`Persone name: ${userName}, age: ${userAge}`);
+    };
+
+    this.getAge = function() {
+        return userAge;
+    };
+
+    this.setAge = function(age) {
+        if (typeof age === 'number' && age > 0 && age < 110) {
+            userAge = age;
+        } else {
+            console.log('Недопустимое значение');
+        }
+    };
+
+    this.getName = function() {
+        return userName;
+    };
+
+    this.setName = function(name) {
+        userName = name;
+    };
+}
+
+const ivan = new User('Ivan', 27);
+
+console.log(ivan.userName);
+console.log(ivan.userAge);
+
+console.log(ivan.getName());
+console.log(ivan.getAge());
+
+ivan.setName('Alex');
+ivan.setAge('30');
+
+ivan.say();
 
 // Class
-// \d - цифры
-// \w - слова, буквы
-// \s - пробелы
+class User {
+    constructor(name,age) {
+        this._name = name;
+        this._age = age;
+    }
+    
 
-// \D - не цифры
-// \W - не буквы
+    say() {
+        console.log(`Persone name: ${this._name}, age: ${this._age}`);
+    }
 
-// const ans = prompt('Введите число');
+    get age() {
+        return this._age;
+    }
 
-// const reg = /\d/g;
+    set age(age) {
+        if (typeof age === 'number' && age > 0 && age < 110) {
+            this._age = age;
+        } else {
+            console.log('Недопустимое значение');
+        }
+    }
 
-// console.log(ans.match(reg));
-// console.log(ans.search(reg)); // ищет одно вхождение
-// console.log(ans.match(reg));
+    get name() {
+        return this._name;
+    }
 
-// const pass = prompt('Password');
+    set name(name) {
+        this._name = name;
+    }
+}
 
-// console.log(pass.replace(/./g, "*"));
-// console.log(pass.replace(/\./g, "*"));
+const ivan = new User('Ivan', 27);
 
-// console.log('12-34-56'.replace(/-/g, ':'));
+console.log(ivan.name);
+console.log(ivan.age);
 
-const str = 'My name is R2D2';
+ivan.age = 99;
+ivan.name = 'Alex';
 
-console.log(str.match(/\D/ig));
+ivan.say();
 
+// Class (Эксперементальный синтаксис)
+class User {
+    constructor(name,age) {
+        this._name = name;
+        this._age = age;
+    }
+
+    #surname = 'Ivanov';
+    
+    say = () => {
+        console.log(`Persone name: ${this._name} ${this.#surname}, age: ${this._age}`);
+    }
+
+    get age() {
+        return this._age;
+    }
+
+    set age(age) {
+        if (typeof age === 'number' && age > 0 && age < 110) {
+            this._age = age;
+        } else {
+            console.log('Недопустимое значение');
+        }
+    }
+
+    get name() {
+        return this._name;
+    }
+
+    set name(name) {
+        this._name = name;
+    }
+
+    get surname() {
+        return this.#surname;
+    }
+
+    set surname(surname) {
+        this.#surname = surname;
+    }
+}
+
+const ivan = new User('Ivan', 27);
+
+console.log(ivan.surname);
+
+ivan.surname = 'Petrov';
+
+console.log(ivan.surname);
+ivan.say();
