@@ -1,47 +1,17 @@
 'use strict';
 
-// Local Storage
-// localStorage.setItem('number', 5);
-
-// localStorage.removeItem('number');
-
-// localStorage.clear();
-
-// console.log(localStorage.getItem('number'));
-
-const checkbox = document.querySelector('#checkbox'),
-      form = document.querySelector('form'),
-      change = document.querySelector('#color');
-
-if (localStorage.getItem('isChecked')) {
-    checkbox.checked = true;
-}
-
-if (localStorage.getItem('bg') === 'changed') {
-    form.style.backgroundColor = 'red';
-}
-
-checkbox.addEventListener('change', () => {
-    localStorage.setItem('isChecked', true);
-});
-
-change.addEventListener('click', () => {
-    if (localStorage.getItem('bg') === 'changed') {
-        localStorage.removeItem('bg');
-        form.style.backgroundColor = '#fff';
-    } else {
-        localStorage.setItem('bg', 'changed');
-        form.style.backgroundColor = 'red';
-    }
-}); 
-
 const persone = {
     name: 'Alex',
-    age: 25
+    age: 25,
+
+    get userAge() {
+        return this.age;
+    },
+
+    set userAge(age) {
+        this.age = age;
+    }
 };
 
-const serializePersone = JSON.stringify(persone);
-
-localStorage.setItem('alex', serializePersone);
-
-console.log(JSON.parse(localStorage.getItem('alex')));
+console.log(persone.userAge = 30);
+console.log(persone.userAge);
