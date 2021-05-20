@@ -1,15 +1,38 @@
 'use strict';
 
-try {
-    console.log('Normal');
-    console.log(a);
-    console.log('result');
-} catch (e) {
-    console.log(e.name);
-    console.log(e.message);
-    console.log(e.stack);
-} finally {
-    console.log('Finish');
+// function* generator() {
+//     yield 'S';
+//     yield 't';
+//     yield 'a';
+//     yield 'r';
+//     yield 't';
+// }
+
+// const str = generator();
+
+// console.log(str.next().value);
+// console.log(str.next().value);
+// console.log(str.next().value);
+// console.log(str.next().value);
+// console.log(str.next().value);
+
+function* count(n) {
+    for (let i = 0; i < n; i++) {
+        yield i;
+    }
 }
 
-console.log('Still normal');
+for (let k of count(8)) {
+    console.log(k);
+}
+
+// const counter = count(7);
+
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
+// console.log(counter.next().value);
