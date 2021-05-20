@@ -1,24 +1,15 @@
 'use strict';
 
-const number = 1;
+try {
+    console.log('Normal');
+    console.log(a);
+    console.log('result');
+} catch (e) {
+    console.log(e.name);
+    console.log(e.message);
+    console.log(e.stack);
+} finally {
+    console.log('Finish');
+}
 
-// Анонимная самовызывающаяся фукнкция
-(function() {
-    let number = 2;
-    console.log(number);
-    console.log(number + 3);
-}());
-
-console.log(number);
-
-const user = (function() {
-    const privat = function() {
-        console.log("I'm private!");
-    };
-
-    return {
-        sayHello: privat
-    };
-}());
-
-user.sayHello();
+console.log('Still normal');
